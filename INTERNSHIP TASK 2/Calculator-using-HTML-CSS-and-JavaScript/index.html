@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Calculator with Conclusion</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        /* Style for the colorful alert box */
+        #customAlert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f7d794;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 300px;
+            text-align: center;
+        }
+
+        #customAlert h2 {
+            color: #ff793f;
+            font-size: 24px;
+        }
+
+        #customAlert button {
+            background-color: #34ace0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #customAlert button:hover {
+            background-color: #227093;
+        }
+
+        /* Backdrop to dim the page */
+        #backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Style for the calculator finish button */
+        #finishButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #34ace0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #finishButton:hover {
+            background-color: #227093;
+        }
+
+        /* Hidden conclusion message section */
+        #conclusion {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #conclusion h2 {
+            color: #ff793f;
+            font-size: 30px;
+        }
+
+        #conclusion p {
+            color: #333;
+            font-size: 18px;
+        }
+
+        #conclusion button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #conclusion button:hover {
+            background-color: #d63031;
+        }
+    </style>
+</head>
+<body onload="load(); showCustomAlert()">
+    <div id="calculator">
+        <!-- Screen and clear key -->
+        <div class="top">
+            <span id="clear">C</span>
+            <div id="screen"></div>
+        </div>
+
+        <div class="keys">
+            <!-- operators and other keys -->
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span class="operator">+</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span class="operator">-</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span class="operator">÷</span>
+            <span>0</span>
+            <span>.</span>
+            <span class="eval">=</span>
+            <span class="operator">x</span>
+        </div>
+
+        <!-- Finish Button -->
+        <button id="finishButton" onclick="showConclusion()">Finish</button>
+    </div>
+
+    <!-- Backdrop for the alert -->
+    <div id="backdrop"></div>
+
+    <!-- Custom colorful alert box -->
+    <div id="customAlert">
+        <h2>Welcome to the Calculator!</h2>
+        <p>Let's make some calculations.</p>
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+
+    <!-- Conclusion Section -->
+    <div id="conclusion">
+        <h2>Thank You!</h2>
+        <p>You have successfully completed your calculations.</p>
+        <button onclick="reloadPage()">Start Again</button>
+    </div>
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        // Function to show the custom alert
+        function showCustomAlert() {
+            document.getElementById("customAlert").style.display = "block";
+            document.getElementById("backdrop").style.display = "block";
+        }
+
+        // Function to close the custom alert
+        function closeCustomAlert() {
+            document.getElementById("customAlert").style.display = "none";
+            document.getElementById("backdrop").style.display = "none";
+        }
+
+        // Function to show the conclusion and hide the calculator
+        function showConclusion() {
+            document.getElementById("calculator").style.display = "none";  // Hide the calculator
+            document.getElementById("conclusion").style.display = "block"; // Show conclusion
+        }
+
+        // Function to reload the page (start over)
+        function reloadPage() {
+            location.reload(); // Reload the entire page to reset
+        }
+    </script>
+</body>
+</html>
